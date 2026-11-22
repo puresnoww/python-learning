@@ -1,26 +1,42 @@
-print("=== PYTHON CALCULATOR 2.0 ===")
+print("=== PYTHON CALCULATOR 3.0 ===")
 
 while True:
-    num1 = float(input("\nFirst number: "))
-    operator = input("Operator (+, -, *, /): ")
-    num2 = float(input("Second number: "))
+    try:
+        number1 = float(input("First number: "))
+        operator = input("Operator (+, -, *, /, **): ")
+        number2 = float(input("Second number: "))
 
-    if operator == "+":
-        print("Result:", num1 + num2)
-    elif operator == "-":
-        print("Result:", num1 - num2)
-    elif operator == "*":
-        print("Result:", num1 * num2)
-    elif operator == "/":
-        if num2 != 0:
-            print("Result:", num1 / num2)
+        if operator == "+":
+            result = number1 + number2
+
+        elif operator == "-":
+            result = number1 - number2
+
+        elif operator == "*":
+            result = number1 * number2 
+
+        elif operator == "/":
+            if number2 == 0:
+                print("Error Division by zero!")
+                continue
+            result = number1 / number2
+
+        elif operator =="**":
+            result = number1 ** number2
+
         else:
-            print("Cannot divide by zero!")
-    else:
-        print("Unknown operator!")
+            print("Invalid Operator!")
+            continue
 
-    again = input("\nContinue? (y/n): ")
+        print(f"Result: {result:g}")
+
+    except ValueError:
+        print("Error: Enter valid numbers!")
+
+    again = input("Continue? (y/n): ")
 
     if again.lower() != "y":
         print("Goodbye!")
         break
+        
+
